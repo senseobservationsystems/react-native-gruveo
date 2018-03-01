@@ -1,0 +1,28 @@
+{
+  "name": "react-native-gruveo",
+  "description": "Gruveo SDK component for React Native.",
+  "version": "0.0.1",
+  "author": "Umar Nizamani <umar@sense-os.nl> (https://sense-health.com)",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10"
+  },
+  "typings": "index.d.ts",
+  "keywords": [
+    "gruveo",
+    "video",
+    "chat",
+    "call",
+    "voice",
+    "native",
+    "react",
+    "react-native"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "nativePackage": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/senseobservationsystems/react-native-gruveo.git"
+  }
+}
