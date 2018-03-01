@@ -3,6 +3,7 @@ declare module 'react-native-gruveo' {
      * Inidicates the type of error that occurred while initiating a call 
      */
     export enum InitiateCallError {
+        UnknownError            = -1, // An unknown error has occurred
         None                    = 0,  // Сall created successfully
         CodeCallExist           = 1,  // Current call not ended
         MissingClientID         = 2,  // The clientId value hasn't been set
@@ -12,7 +13,7 @@ declare module 'react-native-gruveo' {
     }
 
     /**
-     * Inidicates the type of error that occurred while initiating a call 
+     * Inidicates the type of error that occurred while ending the call 
      */
     export enum CallEndReason { 
         InvalidCredentials      = 0,  // Invalid token signature provided
@@ -23,7 +24,7 @@ declare module 'react-native-gruveo' {
         HandleBusy              = 5,  // Callee is busy with another call
         HandleNonExist          = 6,  // Gruveo handle doesn't exist
         FreeDemoEnded           = 7,  // The 5-minute call limit has been reached (when using the demo client ID)
-        RoomLimitReached        = 8,  // Room limit of 8 participants has been reached
+        RoomLimitReached        = 8,  // Room limit of participants has been reached
         NoConnection            = 9,  // Lost connection
         User                    = 10, // Call ended normally from UI
         OtherParty              = 11  // Call ended normally by other party
@@ -44,12 +45,6 @@ declare module 'react-native-gruveo' {
      * @param {string} clientID The clientID for the current client
      */
     export function initialize(clientID: string) : void;
-
-    /**
-     * Initialize Gruveo in demo mode
-     * This specifies a client id 'demo' and handles token signing internally to ease testing
-     */
-    export function initializeDemo(): void;
 
     /**
      * Initiate a call

@@ -7,48 +7,36 @@ const { RNGruveo } = NativeModules;
 const nativeEventEmitter = new NativeEventEmitter(RNGruveo);
 
 export var InitiateCallError = {
-    'None': 0,              // Сall created successfully
-    'CodeCallExist': 1,         // Curretn call not ended
-    'MissingClientID': 2,       // The clientId value hasn't been set
-    'InvalidCode': 3,           // The code value contains invalid characters
-    'NetworkUnreachable': 4,    // The device is offline
-    'MicrophoneAccessDenied': 5 // Microphone access denied by user
+    'UnknownError': -1,             // An unknown error has occured
+    'None': 0,                      // Сall created successfully
+    'CodeCallExist': 1,             // Curretn call not ended
+    'MissingClientID': 2,           // The clientId value hasn't been set
+    'InvalidCode': 3,               // The code value contains invalid characters
+    'NetworkUnreachable': 4,        // The device is offline
+    'MicrophoneAccessDenied': 5     // Microphone access denied by user
 }
 
 export var CallEndReason = {
+    'UnknownError': -1,             // An unknown error has occured
     'InvalidCredentials': 0,        // Invalid token signature provided
-    'InternalError': 1,                 // Internal error when creating call
-    'OutdatedProtocolVersion': 2,       // Outdated SDK version
-    'Busy': 3,                          // Call room is locked
-    'HandleUnreachable': 4,             // Callee is unreachable
-    'HandleBusy': 5,                    // Callee is busy with another call
-    'HandleNonExist': 6,                // Gruveo handle doesn't exist
-    'FreeDemoEnded': 7,                 // The 5-minute call limit has been reached (when using the demo client ID)
-    'RoomLimitReached': 8,              // Room limit of 8 participants has been reached
-    'NoConnection': 9,                  // Lost connection
-    'User': 10,                          // Call ended normally from UI
-    'OtherParty': 11,                     // Call ended normally by other party
+    'InternalError': 1,             // Internal error when creating call
+    'OutdatedProtocolVersion': 2,   // Outdated SDK version
+    'Busy': 3,                      // Call room is locked
+    'HandleUnreachable': 4,         // Callee is unreachable
+    'HandleBusy': 5,                // Callee is busy with another call
+    'HandleNonExist': 6,            // Gruveo handle doesn't exist
+    'FreeDemoEnded': 7,             // The 5-minute call limit has been reached (when using the demo client ID)
+    'RoomLimitReached': 8,          // Room limit of 8 participants has been reached
+    'NoConnection': 9,              // Lost connection
+    'User': 10,                     // Call ended normally from UI
+    'OtherParty': 11,               // Call ended normally by other party
 }
 
 export var CallStatus = {
-    'requestToSignApiAuthToken': 'requestToSignApiAuthToken',       // Invalid token signature provided
-    'callEstablished': 'callEstablished',                 // Internal error when creating call
-    'callEnd': 'callEnd',                         // Outdated SDK version
-    'recordingStateChanged': 'recordingStateChanged'
-}
-
-function onGruveoEventFired(body) {
-    switch (body.name) {
-        case 'requestToSignApiAuthToken':
-            // Contains Payload
-            break;
-        case 'callEstablished':
-            break;
-        case 'callEnd':
-            break;
-        case 'recordingStateChanged':
-            break;
-    }
+    'requestToSignApiAuthToken': 'requestToSignApiAuthToken',       // There is a request to sign the authentication token
+    'callEstablished': 'callEstablished',                           // Call has established  (2 or more people in room)
+    'callEnd': 'callEnd',                                           // Call has finished for us (we finished or everyone has left)
+    'recordingStateChanged': 'recordingStateChanged'                // The state of recording the current chat has changed
 }
 
 var GruveoSDKCallEventListener = null;
@@ -58,15 +46,7 @@ var GruveoSDKCallEventListener = null;
  * @param {string} clientID The clientID for the current client
  */
 export function initialize(clientID) {
-    RNGruveo.initialize(clientID, false);
-}
-
-/**
- * Initialize Gruveo in demo mode
- * This specifies a client id 'demo' and handles token signing internally to ease testing
- */
-export function initializeDemo() {
-    RNGruveo.initialize('demo', true);
+    RNGruveo.initialize(clientID);
 }
 
 /**
@@ -83,7 +63,7 @@ export function call(code, enableVideo, enableChat, statusCallback)  {
     }
 
     // Register Call event emitter
-    GruveoSDKCallEventListener = nativeEventEmitter.addListener('GruveoSDK', (body) => {
+    GruveoSDKCallEventListener = nativeEventEmitter.addListener('RNGruveo', (body) => {
         statusCallback(body.name, body.payload)
 
         // If this is a call end event, then remove the listener

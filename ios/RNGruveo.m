@@ -13,17 +13,14 @@
 @implementation GruveoDelegate
 {
     RCTEventEmitter *eventEmitter;
-    BOOL demoTokenSigning;
 }
 
-// Initialize the delegate with an event emitter and specify whether we should enable demo token signing
-// NOTE: When demo token signing is enabled, the SDK will sign authentication tokens internally from https://api-demo.gruveo.com
-- (id)init:(RCTEventEmitter*)eventEmitter_ demoTokenSigning:(BOOL)demoTokenSigning_
+// Initialize the delegate with an event emitter to send events to react
+- (id)init:(RCTEventEmitter*)eventEmitter_
 {
     if( self = [super init] )
     {
         eventEmitter = eventEmitter_;
-        demoTokenSigning = demoTokenSigning_;
     }
     
     return self;
@@ -33,27 +30,6 @@
 - (void)requestToSignApiAuthToken:(NSString *)token {
     
     [eventEmitter sendEventWithName:GruveoSDKEventName body:@{@"name": @"requestToSignApiAuthToken", @"payload":token}];
-    
-    // This flag specifies to enable using demo signing, this makes it easier to test Gruveo without implementing token signing in React Native
-    // but does not work for production use cases
-    if (demoTokenSigning) {
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://api-demo.gruveo.com/signer"]];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody:[token dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
-        
-        [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if ([data isKindOfClass:[NSData class]]) {
-                NSString *signedToken = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                [GruveoCallManager authorize:signedToken];
-            } else {
-                [GruveoCallManager authorize:nil];
-            }
-        }] resume];
-    }
 }
 
 // Callback when a call is actually established
@@ -87,12 +63,11 @@
     return @[GruveoSDKEventName];
 }
 
-// Initialize with ClientID and specify if you want to enable demo token signing
-// NOTE: demoTokenSigning is useful if you want to play with Gruveo in a non-produciton system
-RCT_EXPORT_METHOD(initialize:(NSString*)clientID demoTokenSigning:(BOOL)demoTokenSigning)
+// Initialize with ClientID
+RCT_EXPORT_METHOD(initialize:(NSString*)clientID)
 {
     // Initialize and setup a delegate for Gruveo
-    delegate = [[GruveoDelegate alloc] init:self demoTokenSigning:demoTokenSigning];
+    delegate = [[GruveoDelegate alloc] init:self];
     [GruveoCallManager setDelegate:delegate];
     
     // Set Gruveo ClientID

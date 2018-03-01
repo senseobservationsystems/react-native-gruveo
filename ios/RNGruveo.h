@@ -9,7 +9,7 @@
 #import <React/RCTEventEmitter.h>
 @import GruveoSDK;
 
-NSString *const GruveoSDKEventName = @"GruveoSDK";
+NSString *const GruveoSDKEventName = @"RNGruveo";
 
 // A delegate interface to be used by RNGruveo
 @interface GruveoDelegate: NSObject<GruveoCallManagerDelegate>
