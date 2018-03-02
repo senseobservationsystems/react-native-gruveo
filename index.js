@@ -7,6 +7,7 @@ const { RNGruveo } = NativeModules;
 const nativeEventEmitter = new NativeEventEmitter(RNGruveo);
 
 export var InitiateCallError = {
+    'Unknown': -1,                  // An unkown error occurred initializing the call
     'None': 0,                      // Сall created successfully
     'CodeCallExist': 1,             // Curretn call not ended
     'MissingClientID': 2,           // The clientId value hasn't been set

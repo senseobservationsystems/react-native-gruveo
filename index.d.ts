@@ -3,6 +3,7 @@ declare module 'react-native-gruveo' {
      * Inidicates the type of error that occurred while initiating a call 
      */
     export enum InitiateCallError {
+        Unknown                 = -1, // An unkown error occurred initializing the call
         None                    = 0,  // Сall created successfully
         CodeCallExist           = 1,  // Current call not ended
         MissingClientID         = 2,  // The clientId value hasn't been set
