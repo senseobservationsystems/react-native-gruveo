@@ -35,16 +35,14 @@ Install the NPM package: `npm install --save react-native-gruveo`
 
 ### iOS
 
-* Right click on Libraries, select **Add files to "…"** and select `node_modules/react-native-gruveo/RNGruveo.xcodeproj`
-* Select your project and under **Build Phases** -> **Link Binary With Libraries**, press the + and select `libRNGruveo.a`.
-* Set a deployment target >= 10.0 in your project
 * Add the following to your `Podfile` in all the targets you wish to build and run `pod update`:
-
 ```
  pod 'GruveoSDK' 
 ```
-
-- In your info.plist you should add `NSCameraUsageDescription` and `NSMicrophoneUsageDescription` keys as [described here](https://about.gruveo.com/developers/ios-sdk/setup-usage/)
+* Right click on Libraries, select **Add files to "…"** and select `node_modules/react-native-gruveo/ios/RNGruveo.xcodeproj`
+* Select your project and under **Build Phases** -> **Link Binary With Libraries**, press the + and select `libRNGruveo.a`.
+* Set a deployment target >= 9.0 in your project
+* In your info.plist you should add `NSCameraUsageDescription` and `NSMicrophoneUsageDescription` keys as [described here](https://about.gruveo.com/developers/ios-sdk/setup-usage/)
 
 ### Android
 
@@ -59,7 +57,7 @@ allprojects {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
-+ 		maven { url "https://jitpack.io" }
++       maven { url "https://jitpack.io" }
 +       maven { url "https://maven.google.com" }
     }
 }
@@ -83,8 +81,8 @@ apply plugin: 'com.android.application'
 
 android {
 ...
-+    compileSdkVersion 26        // To ensure required support compat is available
-+    buildToolsVersion "26.0.1"  // To ensure required support compat is available
++    compileSdkVersion 26        // Atleast 26+ for compaitbile support compat library
++    buildToolsVersion "26.0.0"  // Atleast 26+ for compaitbile support compat library
 
     defaultConfig {
 +        minSdkVersion 17 // Needed for video call
