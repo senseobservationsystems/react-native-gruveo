@@ -22,7 +22,7 @@ export default class App extends Component<Props> {
   }
 
   callWithGruveo() {
-    Gruveo.call('thisisasensehealthroom', false, false, (status, payload) => {
+    Gruveo.call('thisisanexampleroomcode', false, false, (status, payload) => {
       switch (status) {
         case Gruveo.CallStatus.initFailed:
           this.onCallInitFailed(Number(payload));
