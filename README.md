@@ -1,4 +1,4 @@
-#react-native-gruveo
+# react-native-gruveo
 
 [Gruveo](https://www.gruveo.com/) SDK for React Native. 
 
