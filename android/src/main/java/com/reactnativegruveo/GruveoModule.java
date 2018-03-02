@@ -37,7 +37,7 @@ public class GruveoModule extends ReactContextBaseJavaModule implements Gruveo.E
     }
 
     @ReactMethod
-    public void call(String code, boolean videoCall, boolean textChat, Promise promise) {
+    public void call(String code, boolean videoCall, boolean textChat) {
         final Bundle extras = new Bundle();
         extras.putBoolean(Gruveo.GRV_EXTRA_DISABLE_CHAT, !textChat);
 
@@ -50,23 +50,23 @@ public class GruveoModule extends ReactContextBaseJavaModule implements Gruveo.E
                 .build();
 
         if (result.equals(Gruveo.GRV_INIT_OK)) {
-            promise.resolve(0);
+            sendEvent("initialized", null);
         } else {
             // Check if there were any errors and reject the promise
             // We use the same error codes as specified in the iOS SDK for uniformity
             switch (result) {
                 case Gruveo.GRV_INIT_MISSING_CLIENT_ID:
-                    promise.reject("2", "Error creating Gruveo Room", null);
+                    sendEvent("initFailed", "2");
                     break;
                 case Gruveo.GRV_INIT_MISSING_CALL_CODE:
                 case Gruveo.GRV_INIT_INVALID_CALL_CODE:
-                    promise.reject("3", "Error creating Gruveo Room", null);
+                    sendEvent("initFailed", "3");
                     break;
                 case Gruveo.GRV_INIT_OFFLINE:
-                    promise.reject("4", "Error creating Gruveo Room", null);
+                    sendEvent("initFailed", "4");
                     break;
                 default:
-                    promise.reject("-1", "An unknown error has occurred creating the Gruveo room");
+                    sendEvent("initFailed", "-1");
                     break;
             }
         }
