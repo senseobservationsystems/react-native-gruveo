@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		014A3B5C1C6CF33500B6D375 /* libRNGruveoSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNGruveoSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		014A3B5C1C6CF33500B6D375 /* libRNGruveo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNGruveo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		014A3B681C6CF34500B6D375 /* RNGruveo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGruveo.h; sourceTree = "<group>"; };
 		014A3B691C6CF34500B6D375 /* RNGruveo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGruveo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,7 +51,7 @@
 		014A3B5D1C6CF33500B6D375 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				014A3B5C1C6CF33500B6D375 /* libRNGruveoSDK.a */,
+				014A3B5C1C6CF33500B6D375 /* libRNGruveo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,9 +59,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		014A3B5B1C6CF33500B6D375 /* RNGruveoSDK */ = {
+		014A3B5B1C6CF33500B6D375 /* RNGruveo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 014A3B651C6CF33500B6D375 /* Build configuration list for PBXNativeTarget "RNGruveoSDK" */;
+			buildConfigurationList = 014A3B651C6CF33500B6D375 /* Build configuration list for PBXNativeTarget "RNGruveo" */;
 			buildPhases = (
 				014A3B581C6CF33500B6D375 /* Sources */,
 				014A3B591C6CF33500B6D375 /* Frameworks */,
@@ -71,9 +71,9 @@
 			);
 			dependencies = (
 			);
-			name = RNGruveoSDK;
+			name = RNGruveo;
 			productName = RNGruveoSDK;
-			productReference = 014A3B5C1C6CF33500B6D375 /* libRNGruveoSDK.a */;
+			productReference = 014A3B5C1C6CF33500B6D375 /* libRNGruveo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -90,7 +90,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 014A3B571C6CF33500B6D375 /* Build configuration list for PBXProject "RNGruveoSDK" */;
+			buildConfigurationList = 014A3B571C6CF33500B6D375 /* Build configuration list for PBXProject "RNGruveo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -102,7 +102,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				014A3B5B1C6CF33500B6D375 /* RNGruveoSDK */,
+				014A3B5B1C6CF33500B6D375 /* RNGruveo */,
 			);
 		};
 /* End PBXProject section */
@@ -240,7 +240,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		014A3B571C6CF33500B6D375 /* Build configuration list for PBXProject "RNGruveoSDK" */ = {
+		014A3B571C6CF33500B6D375 /* Build configuration list for PBXProject "RNGruveo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				014A3B631C6CF33500B6D375 /* Debug */,
@@ -249,7 +249,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		014A3B651C6CF33500B6D375 /* Build configuration list for PBXNativeTarget "RNGruveoSDK" */ = {
+		014A3B651C6CF33500B6D375 /* Build configuration list for PBXNativeTarget "RNGruveo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				014A3B661C6CF33500B6D375 /* Debug */,
