@@ -3,13 +3,12 @@ declare module 'react-native-gruveo' {
      * Inidicates the type of error that occurred while initiating a call 
      */
     export enum InitiateCallError {
-        UnknownError            = -1, // An unknown error has occurred
         None                    = 0,  // Сall created successfully
         CodeCallExist           = 1,  // Current call not ended
         MissingClientID         = 2,  // The clientId value hasn't been set
         InvalidCode             = 3,  // The code value contains invalid characters
         NetworkUnreachable      = 4,  // The device is offline
-        MicrophoneAccessDenied  = 5   // Microphone access denied by user
+        MicrophoneAccessDenied  = 5,  // Microphone access denied by user
     }
 
     /**
@@ -34,6 +33,8 @@ declare module 'react-native-gruveo' {
      * Inidicates a status change of the current call
      */
     export enum CallStatus { 
+        initFailed                  = 'initFailed',                     // Failed to initialize the call
+        initialized                 = 'initialized',                    // Successfully initialized the call or room
         requestToSignApiAuthToken   = 'requestToSignApiAuthToken',      // There is a request to sign the authentication token
         callEstablished             = 'callEstablished',                // Call has established  (2 or more people in room)
         callEnd                     = 'callEnd',                        // Call has finished for us (we finished or everyone has left)
@@ -52,9 +53,8 @@ declare module 'react-native-gruveo' {
      * @param {bool} enableVideo Whether to enable video in this call
      * @param {bool} enableChat Whether to enable chat in this call
      * @param {callback} statusCallback Returns CallStatus and a corresponding payload if applicable to the status event
-     * @return {Promise} Resolves to `true` when successful or returns an InitiateCallError on failure
      */
-    export function call(code:string, enableVideo:boolean, enableChat: boolean, statusCallback: ((status: CallStatus, payload: any) => void)): Promise<InitiateCallError>;
+    export function call(code:string, enableVideo:boolean, enableChat: boolean, statusCallback: ((status: CallStatus, payload: any) => void)): void;
 
     /** 
      * Set authorization token in Gruveo SDK 

@@ -206,11 +206,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../ios/Pods/GruveoWebRTC",
 					"$(SRCROOT)/../../../ios/Pods/GruveoSDK/GruveoSDK",
+					"$(SRCROOT)/../example/ios/Pods/GruveoWebRTC",
+					"$(SRCROOT)/../example/ios/Pods/GruveoSDK/GruveoSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)/usr/local/include",
 					"$(SRCROOT)/../../../ios/Pods/Headers/Public/GruveoWebRTC/**",
 					"$(SRCROOT)/../../../ios/Pods/Headers/Public/GruveoSDK/**",
+					"$(SRCROOT)/../example/ios/Pods/Headers/Public/GruveoWebRTC/**",
+					"$(SRCROOT)/../example/ios/Pods/Headers/Public/GruveoSDK/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -225,6 +229,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../ios/Pods/GruveoWebRTC",
 					"$(SRCROOT)/../../../ios/Pods/GruveoSDK/GruveoSDK",
+					"$(SRCROOT)/../example/ios/Pods/GruveoWebRTC",
+					"$(SRCROOT)/../example/ios/Pods/GruveoSDK/GruveoSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)/usr/local/include",

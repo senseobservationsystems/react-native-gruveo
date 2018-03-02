@@ -7,17 +7,15 @@ const { RNGruveo } = NativeModules;
 const nativeEventEmitter = new NativeEventEmitter(RNGruveo);
 
 export var InitiateCallError = {
-    'UnknownError': -1,             // An unknown error has occured
     'None': 0,                      // Сall created successfully
     'CodeCallExist': 1,             // Curretn call not ended
     'MissingClientID': 2,           // The clientId value hasn't been set
     'InvalidCode': 3,               // The code value contains invalid characters
     'NetworkUnreachable': 4,        // The device is offline
-    'MicrophoneAccessDenied': 5     // Microphone access denied by user
+    'MicrophoneAccessDenied': 5,    // Microphone access denied by user
 }
 
 export var CallEndReason = {
-    'UnknownError': -1,             // An unknown error has occured
     'InvalidCredentials': 0,        // Invalid token signature provided
     'InternalError': 1,             // Internal error when creating call
     'OutdatedProtocolVersion': 2,   // Outdated SDK version
@@ -33,6 +31,8 @@ export var CallEndReason = {
 }
 
 export var CallStatus = {
+    'initFailed' : 'initFailed',                                    // Failed to initialize the call
+    'initialized' : 'initialized',                                  // Successfully initialized the call or room
     'requestToSignApiAuthToken': 'requestToSignApiAuthToken',       // There is a request to sign the authentication token
     'callEstablished': 'callEstablished',                           // Call has established  (2 or more people in room)
     'callEnd': 'callEnd',                                           // Call has finished for us (we finished or everyone has left)
@@ -55,7 +55,6 @@ export function initialize(clientID) {
  * @param {bool} enableVideo Whether to enable video in this call
  * @param {bool} enableChat Whether to enable chat in this call
  * @param {callback} statusCallback
- * @return {Promise} Resolves to `true` when successful or returns an error code on failure
  */
 export function call(code, enableVideo, enableChat, statusCallback)  {
     if (GruveoSDKCallEventListener != null) {
@@ -73,8 +72,7 @@ export function call(code, enableVideo, enableChat, statusCallback)  {
         }
     });
 
-    // Return a promise
-    return RNGruveo.call(code, enableVideo, enableChat)
+    RNGruveo.call(code, enableVideo, enableChat)
 }
 
 /** 

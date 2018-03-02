@@ -5,7 +5,6 @@
 //  Created by Umar Nizamani on 27/02/2018.
 //
 
-#import <React/RCTViewManager.h>
 #import "RNGruveo.h"
 @import GruveoSDK;
 
@@ -74,7 +73,7 @@ RCT_EXPORT_METHOD(initialize:(NSString*)clientID)
     [GruveoCallManager setClientId:clientID];
 }
 
-RCT_EXPORT_METHOD(call:(NSString *)code videoCall:(BOOL)video textChat:(BOOL)chat resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(call:(NSString *)code videoCall:(BOOL)video textChat:(BOOL)chat)
 {
     // As we are doing a UI operation, run this on the main queue
     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -84,9 +83,9 @@ RCT_EXPORT_METHOD(call:(NSString *)code videoCall:(BOOL)video textChat:(BOOL)cha
         
         [GruveoCallManager callCode:code videoCall:video textChat:chat onViewController:rootViewController callCreationCompletion:^(CallInitError creationError) {
             if (creationError != CallInitErrorNone) {
-                reject([NSString stringWithFormat: @"%lu", (unsigned long)creationError], @"Error Creating Gruveo Room", nil);
+                [self sendEventWithName:GruveoSDKEventName body:@{@"name": @"initFailed", @"payload":[NSString stringWithFormat: @"%lu", (unsigned long)creationError]}];
             } else {
-                resolve(nil);
+                [self sendEventWithName:GruveoSDKEventName body:@{@"name": @"initialized"}];
             }
         }];
     });

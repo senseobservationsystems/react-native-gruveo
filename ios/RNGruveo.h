@@ -14,18 +14,10 @@ NSString *const GruveoSDKEventName = @"RNGruveo";
 // A delegate interface to be used by RNGruveo
 @interface GruveoDelegate: NSObject<GruveoCallManagerDelegate>
 
-- (id)init:(RCTEventEmitter*)eventEmitter_ demoTokenSigning:(BOOL)demoTokenSigning_;
+- (id)init:(RCTEventEmitter*)eventEmitter_;
 
 @end
 
 // The RNGruveo class
 @interface RCT_EXTERN_MODULE(RNGruveo, RCTEventEmitter)
-
-RCT_EXTERN_METHOD(Initialize:(NSString*)clientID
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
-
-RCT_EXTERN_METHOD(Call:(BOOL)voiceOnly
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
 @end
