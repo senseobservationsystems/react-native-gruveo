@@ -16,7 +16,7 @@ Gruveo.call('example', true, false, (status, payload) => {
         case Gruveo.CallStatus.requestToSignApiAuthToken:
             fetch('https://api-demo.gruveo.com/signer', {
                 method: 'POST',
-                body: token,
+                body: payload,
                 headers: { 'Content-Type': 'text/plain' }
             }).then((response) => {
                 response.text()
