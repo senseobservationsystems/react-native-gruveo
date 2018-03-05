@@ -18,12 +18,9 @@ Gruveo.call('example', true, false, (status, payload) => {
                 method: 'POST',
                 body: payload,
                 headers: { 'Content-Type': 'text/plain' }
-            }).then((response) => {
-                response.text()
-                    .then( (signedToken) => {
-                    Gruveo.authorize(signedToken)
-                })
             })
+            .then((response) => response.text())
+            .then((signedToken) => Gruveo.authorize(signedToken));
             break;
     }
 });
