@@ -2,6 +2,7 @@ package com.reactnativegruveo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
@@ -79,7 +80,13 @@ public class GruveoModule extends ReactContextBaseJavaModule implements Gruveo.E
 
     @ReactMethod
     public void endCall() {
-        Gruveo.Companion.endCall();
+        new Handler(getReactApplicationContext().getMainLooper()).post(
+            new Runnable() {
+                @Override
+                public void run() {
+                    Gruveo.Companion.endCall();
+                }
+            });
     }
 
     @ReactMethod
