@@ -40,6 +40,7 @@ Install the NPM package: `npm install --save react-native-gruveo`
 * Select your project and under **Build Phases** -> **Link Binary With Libraries**, press the + and select `libRNGruveo.a`.
 * Set a deployment target >= 9.0 in your project
 * In your info.plist you should add `NSCameraUsageDescription` and `NSMicrophoneUsageDescription` keys as [described here](https://about.gruveo.com/developers/ios-sdk/setup-usage/)
+* Set “Enable Bitcode” to NO in Target -> Build Settings -> Enable Bitcode
 
 ### Android
 
