@@ -60,6 +60,8 @@ export function initialize(clientID) {
 export function call(code, enableVideo, enableChat, statusCallback)  {
     if (GruveoSDKCallEventListener != null) {
         console.warn("GruveoSDKCallEventListener is not null, did the last call end before you started this call?")
+        GruveoSDKCallEventListener.remove()
+        GruveoSDKCallEventListener = null
     }
 
     // Register Call event emitter
