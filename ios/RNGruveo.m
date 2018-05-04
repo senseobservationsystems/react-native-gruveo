@@ -94,52 +94,68 @@ RCT_EXPORT_METHOD(call:(NSString *)code videoCall:(BOOL)video textChat:(BOOL)cha
 // Supplies the signed token to the SDK
 RCT_EXPORT_METHOD(authorize:(NSString*)signedToken)
 {
-    [GruveoCallManager authorize:signedToken];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [GruveoCallManager authorize:signedToken];
+    });
 }
 
 // Ends the current call.
 RCT_EXPORT_METHOD(endCall)
 {
-    [GruveoCallManager endCall];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [GruveoCallManager endCall];
+    });
 }
 
 // Returns the status of the current call in a promise
 RCT_EXPORT_METHOD(isCallActive:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 {
-    BOOL status = [GruveoCallManager isCallActive];
-    
-    // We convert to an NSNumber which is automatically converted as a boolean in JS
-    resolve([NSNumber numberWithBool:status]);
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        BOOL status = [GruveoCallManager isCallActive];
+        
+        // We convert to an NSNumber which is automatically converted as a boolean in JS
+        resolve([NSNumber numberWithBool:status]);
+    });
 }
 
 // Sets the microphone status.
 RCT_EXPORT_METHOD(toggleAudio:(BOOL)enable)
 {
-    [GruveoCallManager toggleAudio:enable];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [GruveoCallManager toggleAudio:enable];
+    });
 }
 
 // Sets the camera status.
 RCT_EXPORT_METHOD(toggleVideo:(BOOL)enable)
 {
-    [GruveoCallManager toggleVideo:enable];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [GruveoCallManager toggleVideo:enable];
+    });
 }
 
 // Sets the source for the outgoing video stream.
 RCT_EXPORT_METHOD(switchCamera:(BOOL)useFront)
 {
-    [GruveoCallManager switchCamera:useFront];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [GruveoCallManager switchCamera:useFront];
+    });
 }
 
 // Sets the room lock state.
 RCT_EXPORT_METHOD(toggleRoomLock:(BOOL)enable)
 {
-    [GruveoCallManager toggleRoomLock:enable];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [GruveoCallManager toggleRoomLock:enable];
+    });
 }
 
 // Starts or stops call recording.
 RCT_EXPORT_METHOD(toggleRecording:(BOOL)enable)
 {
-    [GruveoCallManager toggleRecording:enable];
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [GruveoCallManager toggleRecording:enable];
+    });
 }
 
 @end
