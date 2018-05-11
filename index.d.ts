@@ -69,7 +69,7 @@ declare module 'react-native-gruveo' {
     export function endCall(): void;
 
     /**
-     * Returns the status of the current call in a promise
+     * Returns true if the call has been established (i.e atleast two clients have joined the room)
      * @return {Promise} Resolves to a boolean with the status of the call
      */
     export function isCallActive(): Promise<boolean>;
