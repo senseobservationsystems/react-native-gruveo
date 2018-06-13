@@ -81,6 +81,11 @@ RCT_EXPORT_METHOD(call:(NSString *)code videoCall:(BOOL)video textChat:(BOOL)cha
         // Get the root view controller from the application itself
         UIViewController* rootViewController = [[[[UIApplication sharedApplication]delegate] window] rootViewController];
         
+        // Check if we already presenting a view controller (e.g Navigation View Controller modal dialogs)
+        if (rootViewController.presentedViewController != NULL) {
+            rootViewController = rootViewController.presentedViewController;
+        }
+
         [GruveoCallManager callCode:code videoCall:video textChat:chat onViewController:rootViewController callCreationCompletion:^(CallInitError creationError) {
             if (creationError != CallInitErrorNone) {
                 [self sendEventWithName:GruveoSDKEventName body:@{@"name": @"initFailed", @"payload":[NSString stringWithFormat: @"%lu", (unsigned long)creationError]}];
