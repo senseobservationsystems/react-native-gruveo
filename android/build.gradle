@@ -10,13 +10,19 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
+def DEFAULT_COMPILE_SDK_VERSION = 26
+def DEFAULT_BUILD_TOOLS_VERSION = "26.0.3"
+def DEFAULT_TARGET_SDK_VERSION  = 22
+def DEFAULT_MIN_SDK_VERSION     = 17
+def DEFAULT_GRUVEO_SDK_VERSION  = "0.5.8"
+
 android {
-  compileSdkVersion 26
-  buildToolsVersion "26.0.1"
+  compileSdkVersion rootProject.hasProperty('compileSdkVersion') ? rootProject.compileSdkVersion : DEFAULT_COMPILE_SDK_VERSION
+  buildToolsVersion rootProject.hasProperty('buildToolsVersion') ? rootProject.buildToolsVersion : DEFAULT_BUILD_TOOLS_VERSION
 
   defaultConfig {
-    minSdkVersion 17
-    targetSdkVersion 22
+    minSdkVersion rootProject.hasProperty('minSdkVersion') ? rootProject.minSdkVersion : DEFAULT_MIN_SDK_VERSION
+    targetSdkVersion rootProject.hasProperty('targetSdkVersion') ? rootProject.targetSdkVersion : DEFAULT_TARGET_SDK_VERSION
     versionCode 1
     versionName "1.0"
   }
@@ -31,6 +37,8 @@ repositories {
 }
 
 dependencies {
+  def gruveoSdkVersion = project.hasProperty('gruveoSdkVersion') ? project.gruveoSdkVersion : DEFAULT_GRUVEO_SDK_VERSION
+
   compile 'com.facebook.react:react-native:+'
-  compile 'org.bitbucket.gruveo:gruveo-sdk-android:0.5.6'
+  compile "org.bitbucket.gruveo:gruveo-sdk-android:${gruveoSdkVersion}"
 }

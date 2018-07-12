@@ -1,5 +1,9 @@
 # react-native-gruveo Change Log
 
+## 1.0.6 - July 12, 2018
+
+- Android: update gruveo-sdk to 0.5.8 and allow injecting target sdk versions into gradle script
+
 ## 1.0.5 - June 13, 2018
 
 - iOS: Fixed a bug caused when trying to initiate video call from a modal dialog
