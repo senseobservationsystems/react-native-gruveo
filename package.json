@@ -6,6 +6,9 @@
     "name": "Umar Nizamani",
     "email": "umar.nizamani@gmail.com"
   },
+  "contributors": [
+    "Ruben Weijers" 
+  ],
   "homepage": "https://github.com/senseobservationsystems/react-native-gruveo",
   "bugs": {
     "url": "https://github.com/senseobservationsystems/react-native-gruveo/issues"

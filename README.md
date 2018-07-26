@@ -134,4 +134,4 @@ public class MainActivity extends extends ReactActivity {
 
 ## License
 
-MIT © Umar Nizamani 2016-2018
+MIT
