@@ -40,6 +40,7 @@ declare module 'react-native-gruveo' {
         callEstablished             = 'callEstablished',                // Call has established  (2 or more people in room)
         callEnd                     = 'callEnd',                        // Call has finished for us (we finished or everyone has left)
         recordingStateChanged       = 'recordingStateChanged',          // The state of recording the current chat has changed
+        recordingFilename           = 'recordingFilename',              // There is a recording filename available
     }
 
     /**
