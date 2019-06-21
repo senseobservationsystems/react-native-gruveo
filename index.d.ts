@@ -101,6 +101,7 @@ declare module 'react-native-gruveo' {
     /** 
      * Starts or stops call recording.
      * @param {bool} enable
+     * @param {int} layout
     */
-    export function toggleRecording(enable:boolean): void;
+    export function toggleRecording(enable:boolean, layout:int): void;
 }

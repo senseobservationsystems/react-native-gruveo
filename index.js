@@ -137,7 +137,8 @@ export function toggleRoomLock(enable) {
 /** 
  * Starts or stops call recording.
  * @param {bool} enable
+ * @param {int} layout
 */
-export function toggleRecording(enable) {
-    RNGruveo.toggleRecording(enable);
+export function toggleRecording(enable, layout) {
+    RNGruveo.toggleRecording(enable, layout);
 }
