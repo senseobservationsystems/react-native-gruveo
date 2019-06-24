@@ -40,6 +40,7 @@ declare module 'react-native-gruveo' {
         callEstablished             = 'callEstablished',                // Call has established  (2 or more people in room)
         callEnd                     = 'callEnd',                        // Call has finished for us (we finished or everyone has left)
         recordingStateChanged       = 'recordingStateChanged',          // The state of recording the current chat has changed
+        recordingFilename           = 'recordingFilename',              // There is a recording filename available
     }
 
     /**
@@ -100,6 +101,7 @@ declare module 'react-native-gruveo' {
     /** 
      * Starts or stops call recording.
      * @param {bool} enable
+     * @param {int} layout
     */
-    export function toggleRecording(enable:boolean): void;
+    export function toggleRecording(enable:boolean, layout:int): void;
 }

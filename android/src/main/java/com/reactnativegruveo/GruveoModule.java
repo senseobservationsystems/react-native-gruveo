@@ -115,8 +115,8 @@ public class GruveoModule extends ReactContextBaseJavaModule implements Gruveo.E
     }
 
     @ReactMethod
-    public void toggleRecording(boolean enable) {
-        Gruveo.Companion.toggleRecording(enable);
+    public void toggleRecording(boolean enable, int layout) {
+        Gruveo.Companion.toggleRecording(enable, layout);
     }
 
     // Callbacks from Gruveo Event Listener
@@ -143,6 +143,11 @@ public class GruveoModule extends ReactContextBaseJavaModule implements Gruveo.E
     @Override
     public void recordingStateChanged(boolean us, boolean them) {
         sendEvent("recordingStateChanged", null);
+    }
+
+    @Override
+    public void recordingFilename(String filename) {
+        sendEvent("recordingFilename", filename);
     }
 
     private void parseCallExtras(Intent data) {
