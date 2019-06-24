@@ -1,5 +1,10 @@
 # react-native-gruveo Change Log
 
+## 1.0.7 - June 24, 2019
+
+- Android: update gruveo-sdk to 0.6.5
+- Improve support for call recording
+
 ## 1.0.6 - July 12, 2018
 
 - Android: update gruveo-sdk to 0.5.8 and allow injecting target sdk versions into gradle script
