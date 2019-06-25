@@ -156,10 +156,11 @@ RCT_EXPORT_METHOD(toggleRoomLock:(BOOL)enable)
 }
 
 // Starts or stops call recording.
-RCT_EXPORT_METHOD(toggleRecording:(BOOL)enable)
+RCT_EXPORT_METHOD(toggleRecording:(BOOL)enable withLayout:(int)layout)
 {
     dispatch_sync(dispatch_get_main_queue(), ^{
-        [GruveoCallManager toggleRecording:enable];
+        GruveoCallRecordingLayout *gruveoRecordingLayout = layout == 0 ? GruveoCallRecordingLayoutMaximized : GruveoCallRecordingLayoutTiled;
+        [GruveoCallManager toggleRecording:enable withLayout:gruveoRecordingLayout];
     });
 }
 
