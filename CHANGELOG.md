@@ -1,5 +1,10 @@
 # react-native-gruveo Change Log
 
+## 1.0.8 - June 26, 2019
+
+- iOS: update GruveoSDK to 1.4
+- Fix: Call recording layout for iOS
+
 ## 1.0.7 - June 24, 2019
 
 - Android: update gruveo-sdk to 0.6.5
