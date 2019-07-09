@@ -73,6 +73,6 @@ dependencies {
   def gruveoSdkVersion = project.hasProperty('gruveoSdkVersion') ? project.gruveoSdkVersion : DEFAULT_GRUVEO_SDK_VERSION
 
   compile 'com.facebook.react:react-native:+'
-  compile "org.[bitbucket.gruveo:gruveo-sdk-android:${gruveoSdkVersion}"
+  compile "org.bitbucket.gruveo:gruveo-sdk-android:${gruveoSdkVersion}"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
