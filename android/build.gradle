@@ -48,26 +48,6 @@ repositories {
       name 'Google'
     }
 }
-buildscript {
-  repositories {
-    jcenter()
-    maven {
-      url 'https://maven.google.com/'
-      name 'Google'
-    }
-  }
-
-  dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.1'
-  }
-}
-
-dependencies {
-  def gruveoSdkVersion = project.hasProperty('gruveoSdkVersion') ? project.gruveoSdkVersion : DEFAULT_GRUVEO_SDK_VERSION
-
-  compile 'com.facebook.react:react-native:+'
-  compile "org.bitbucket.gruveo:gruveo-sdk-android:${gruveoSdkVersion}"
-}
 
 dependencies {
   def gruveoSdkVersion = project.hasProperty('gruveoSdkVersion') ? project.gruveoSdkVersion : DEFAULT_GRUVEO_SDK_VERSION
