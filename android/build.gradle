@@ -1,4 +1,54 @@
 buildscript {
+  ext.kotlin_version = "1.3.31"
+  repositories {
+    jcenter()
+    maven {
+      url 'https://maven.google.com/'
+      name 'Google'
+    }
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.4.1'
+
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+  }
+}
+
+apply plugin: 'com.android.library'
+
+def DEFAULT_COMPILE_SDK_VERSION = 26
+def DEFAULT_BUILD_TOOLS_VERSION = "26.0.3"
+def DEFAULT_TARGET_SDK_VERSION  = 22
+def DEFAULT_MIN_SDK_VERSION     = 17
+def DEFAULT_GRUVEO_SDK_VERSION  = "0.6.5"
+
+android {
+  compileSdkVersion rootProject.hasProperty('compileSdkVersion') ? rootProject.compileSdkVersion : DEFAULT_COMPILE_SDK_VERSION
+  buildToolsVersion rootProject.hasProperty('buildToolsVersion') ? rootProject.buildToolsVersion : DEFAULT_BUILD_TOOLS_VERSION
+
+  defaultConfig {
+    minSdkVersion rootProject.hasProperty('minSdkVersion') ? rootProject.minSdkVersion : DEFAULT_MIN_SDK_VERSION
+    targetSdkVersion rootProject.hasProperty('targetSdkVersion') ? rootProject.targetSdkVersion : DEFAULT_TARGET_SDK_VERSION
+    versionCode 1
+    versionName "1.0"
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://jitpack.io" }
+    maven {
+      url 'https://maven.google.com/'
+      name 'Google'
+    }
+}
+buildscript {
   repositories {
     jcenter()
     maven {
@@ -36,13 +86,13 @@ android {
 }
 
 repositories {
-    mavenCentral()
-    jcenter()
-    maven { url "https://jitpack.io" }
-    maven {
-      url 'https://maven.google.com/'
-      name 'Google'
-    }
+  mavenCentral()
+  jcenter()
+  maven { url "https://jitpack.io" }
+  maven {
+    url 'https://maven.google.com/'
+    name 'Google'
+  }
 }
 
 dependencies {
@@ -50,4 +100,12 @@ dependencies {
 
   compile 'com.facebook.react:react-native:+'
   compile "org.bitbucket.gruveo:gruveo-sdk-android:${gruveoSdkVersion}"
+}
+
+dependencies {
+  def gruveoSdkVersion = project.hasProperty('gruveoSdkVersion') ? project.gruveoSdkVersion : DEFAULT_GRUVEO_SDK_VERSION
+
+  compile 'com.facebook.react:react-native:+'
+  compile "org.[bitbucket.gruveo:gruveo-sdk-android:${gruveoSdkVersion}"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
