@@ -1,5 +1,10 @@
 # react-native-gruveo Change Log
 
+## 1.0.9 - July 10, 2019
+
+- Android: Fix Kotlin dependencies
+- Android: Update Gradle 
+
 ## 1.0.8 - June 26, 2019
 
 - iOS: update GruveoSDK to 1.4
