@@ -1,7 +1,7 @@
 {
   "name": "react-native-gruveo",
   "description": "Gruveo SDK for React Native.",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "author": {
     "name": "Umar Nizamani",
     "email": "umar.nizamani@gmail.com"
@@ -36,5 +36,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/senseobservationsystems/react-native-gruveo.git"
-  }
+  },
+  "files": [
+    "ios",
+    "android",
+    "index.js",
+    "index.d.ts",
+    "react-native-gruveo.podspec"
+  ]
 }
