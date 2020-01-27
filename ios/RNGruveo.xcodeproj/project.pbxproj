@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		014A3B6A1C6CF34500B6D375 /* RNGruveo.m in Sources */ = {isa = PBXBuildFile; fileRef = 014A3B691C6CF34500B6D375 /* RNGruveo.m */; };
+		474BD08923DEF4DE002EACD2 /* UIViewController+Permissions.m in Sources */ = {isa = PBXBuildFile; fileRef = 474BD08723DEF4DE002EACD2 /* UIViewController+Permissions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,8 @@
 		014A3B5C1C6CF33500B6D375 /* libRNGruveo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNGruveo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		014A3B681C6CF34500B6D375 /* RNGruveo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGruveo.h; sourceTree = "<group>"; };
 		014A3B691C6CF34500B6D375 /* RNGruveo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGruveo.m; sourceTree = "<group>"; };
+		474BD08723DEF4DE002EACD2 /* UIViewController+Permissions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Permissions.m"; sourceTree = "<group>"; };
+		474BD08823DEF4DE002EACD2 /* UIViewController+Presentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Presentation.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,8 @@
 		014A3B531C6CF33500B6D375 = {
 			isa = PBXGroup;
 			children = (
+				474BD08723DEF4DE002EACD2 /* UIViewController+Permissions.m */,
+				474BD08823DEF4DE002EACD2 /* UIViewController+Presentation.h */,
 				014A3B681C6CF34500B6D375 /* RNGruveo.h */,
 				014A3B691C6CF34500B6D375 /* RNGruveo.m */,
 				014A3B5D1C6CF33500B6D375 /* Products */,
@@ -95,6 +100,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 014A3B531C6CF33500B6D375;
@@ -113,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				014A3B6A1C6CF34500B6D375 /* RNGruveo.m in Sources */,
+				474BD08923DEF4DE002EACD2 /* UIViewController+Permissions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
